@@ -12,4 +12,4 @@ Behold:
 
 > P.S. I'm moderately happy with my polybar.
 
-**wallpaper from wallhaven.cc**
+wallpaper from [wallhaven.cc](https://whvn.cc/3led2d)
