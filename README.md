@@ -12,4 +12,12 @@ Behold:
 
 > P.S. I'm moderately happy with my polybar.
 
+## Potential errors
+When using bspwm, I noticed I couldn't open Ghidra successfully. To solve this run:
+```bash
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
+```
+
+
 wallpaper from [wallhaven.cc](https://whvn.cc/3led2d)
