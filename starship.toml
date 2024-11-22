@@ -17,13 +17,13 @@ disabled = false
 # Customize the format of the working directory
 [directory]
 truncate_to_repo = true
-format = "[ $path ]($style)"
+format = "[ $path ]($style)"
 style = "fg:text bg:#3B76F0"
 
 [git_branch]
 symbol = " "
 format = "[ $symbol$branch(:$remote_branch) ]($style)"
-style = "fg:#1C3A5E bg:#FCF392"
+style = "fg:#1C3A5E bg:#bd93f9"
 
 [git_metrics]
 disabled = false
@@ -48,11 +48,12 @@ style = "white"
 [custom.git_config_email]
 description = "Output the current git user's configured email address."
 command = "git config user.email"
-format = "\n[$symbol(  $output)]($style)"
+format = "[$symbol(  $output)]($style)"
 # Only when inside git repository
 when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
 style = "text"
 
+# Using symbols.Debian because parrot doesn't exist but the glyph is for parrot os
 [os]
 disabled = false
 format = "$symbol"
