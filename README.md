@@ -8,9 +8,9 @@ The motivation for this was I wanted to replicate my same workflows I use on arc
 
 Behold:
 
-![bspwm on Parrot OS](bspwm-parrot2.png)
+![bspwm on Parrot OS](after-rice.png)
 
-> P.S. I'm moderately happy with my polybar.
+> P.S. I'm very happy with my polybar.
 
 ## Potential errors
 When using bspwm, I noticed I couldn't open Ghidra successfully. To solve this run:
