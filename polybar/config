@@ -6,6 +6,7 @@ primary = #bd93f9
 secondary = #ffb86c
 alert = #ff5555
 disabled = #6272a4
+space-background = #0024283b
 
 [bar/parrot]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -37,8 +38,8 @@ font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
 ;font-1 = siji:pixelsize=11;1
 font-2 = FontAwesome:size=12
 
-modules-left = memory cpu filesystem  
-modules-center = i3 xworkspaces  
+modules-left = memory cpu filesystem separatorleft 
+modules-center = i3 xworkspaces separatoright
 modules-right = wlan battery alsa date powermenu
 
 tray-position = right
@@ -63,6 +64,17 @@ cursor-scroll = ns-resize
 type = internal/xwindow
 label = %title:0:30:...%
 
+[module/separatorleft]
+type = custom/text
+content = "                                                                                                                                                                  "
+content-foreground = ${colors.space-background}
+content-background = ${colors.space-background}
+
+[module/separatoright]
+type = custom/text
+content = "                                                                                  "
+content-foreground = ${colors.space-background}
+content-background = ${colors.space-background}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -193,7 +205,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 label =  %percentage:2%%
 ;label-background = ${colors.background-alt} 
 label-padding = 2                                
-label-foreground = #AF9BD4         
+label-foreground = #2EB3F0   
 label-margin = 2                      
 
 [module/memory]
@@ -286,7 +298,7 @@ label-padding = 2
 label-margin = 2                      
 format-volume = <label-volume>
 label-volume =  %percentage%%
-label-volume-foreground = #AF9BD4
+label-volume-foreground = #2eb3f0
 ;label-volume-foreground = ${root.foreground}
 ;format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
