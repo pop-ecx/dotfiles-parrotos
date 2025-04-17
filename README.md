@@ -8,7 +8,7 @@ The motivation for this was I wanted to replicate my same workflows I use on arc
 
 Behold:
 
-![bspwm on Parrot OS](new-nrice.png)
+![bspwm on Parrot OS](polyb.png)
 
 > P.S. I'm very happy with my polybar.
 
