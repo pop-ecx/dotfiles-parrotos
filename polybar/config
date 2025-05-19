@@ -1,7 +1,7 @@
 [colors]
 rounds =            #2b2f37
-background =        #1e222a 
-background-alt =    #444
+background =        #001e222a 
+btckground-alt =    #444
 foreground =        #dfdfdf
 foreground-alt =    #555
 primary =           #ffb52a
@@ -10,16 +10,18 @@ alert =             #bd2c40
 green =             #98c379
 
 [bar/parrot]
-width = 100%
+width = 98%
 height = 25
 fixed-center = true
+offset-x = 1%
+offset-y = 1%
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 0
 
-border-size = 5
+border-size = 0
 border-color = ${colors.background}
 
 
@@ -29,9 +31,9 @@ font-2 = Material Design Icons:size=15;3
 ;font-3 = unifont:fontformat=truetype:size=13:antialias=true;
 font-3 = FiraCode Nerd Font:size=12;2
 
-modules-left =      date temperature battery round-left round-right round-left round-right
+modules-left =      picon date temperature weather battery 
 modules-center =    bspwm
-modules-right =     round-left pulseaudio round-right memory cpu round-left wlan round-right powermenu
+modules-right =     pulseaudio memory cpu wlan powermenu
 
 tray-position = right
 tray-padding = 1
@@ -86,8 +88,6 @@ label-empty = %icon%
 label-empty-background = ${colors.background}
 label-empty-padding = 1
 
-
-
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = true
@@ -131,6 +131,8 @@ format-prefix-foreground = #fca2aa
 format-foreground = #fca2aa
 ;format-underline = #f90000
 label = %percentage:2%%
+format-prefix-background = ${colors.rounds}
+format-background = ${colors.rounds}
 
 [module/memory]
 type = internal/memory
@@ -141,7 +143,8 @@ format-prefix-foreground = #98c379
 ;format-underline = #4bffdc
 format-foreground = #98c379
 label = %mb_used%
-
+format-prefix-background = ${colors.rounds}
+format-background = ${colors.rounds}
 
 [module/wlan]
 type = internal/network
@@ -207,12 +210,22 @@ format-prefix = 󰃰
 format-prefix-padding = 1
 ;format-prefix-underline = ${colors.color6}
 format-prefix-foreground = #acd7ff
-;format-prefix-background = ${colors.color1}
+format-prefix-background = ${colors.rounds}
+format-background = ${colors.rounds}
 ;label =  %time%
 ;label-underline = ${colors.color6}
 ;label-foreground = ${colors.color3}
 ;label-background = ${colors.color1}
 label-padding = 1
+
+[module/picon]
+type = custom/text
+content = 
+content-foreground = ${colors.foreground}
+content-background = ${colors.rounds}
+content-padding = 1
+format-prefix-background = ${colors.rounds}
+format-background = ${colors.rounds}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -233,7 +246,7 @@ bar-volume-foreground-2 = #98c379
 bar-volume-foreground-3 = #98c379
 bar-volume-foreground-4 = #98c379
 bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-6 = #acd7ff 
 bar-volume-gradient = false
 bar-volume-indicator = 
 bar-volume-indicator-font = 2
@@ -278,7 +291,7 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = #acd7ff 
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -295,14 +308,17 @@ ramp-capacity-foreground = ${colors.foreground-alt}
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-foreground =  #acd7ff
 animation-charging-framerate = 750
+format-charging-background = ${colors.rounds}
 
 animation-discharging-0 = 
 animation-discharging-1 = 
 animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
+format-discharging-background = ${colors.rounds}
+
 
 [module/temperature]
 type = internal/temperature
@@ -310,7 +326,7 @@ thermal-zone = 0
 warn-tempeeno1e = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #acd7ff 
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -321,34 +337,23 @@ label-warn-foreground = ${colors.secondary}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = #BF616A
+format-prefix-background = ${colors.rounds}
+format-background = ${colors.rounds}
 
 [module/powermenu]
 
 type = custom/text
 content = " "
 content-padding = 1
-content-background = ${colors.background}
+content-background = ${colors.rounds}
 content-foreground = #BF616A
 click-left = ~/.config/polybar/scripts/dmenu.sh
 format-underline = #704214
 
-;[module/updates]
-;type = custom/script
-;exec = sudo xbps-install -S > /dev/null 2>&1; ~/.config/polybar/scripts/xbps-updates
-;format = <label>
-;interval = 4600 
-;label =󰏖 %output% 
-;label-padding = 0
-;;label-foreground = #BF616A
-;label-foreground = #fca2aa
-;label-background = ${colors.rounds}
-
 [module/weather]
-
 type = custom/script
-
-exec = curl wttr.in/?0?q?T 2>/dev/null | awk '/°(C|F)/ {printf $(NF-1) $NF}'
+exec = curl wttr.in/kijabe?0?q?T 2>/dev/null | awk '/°(C|F)/ {printf $(NF-1) $NF}'
 interval = 5000
 label = %output%
 format = <label>
@@ -356,7 +361,7 @@ format-padding = 1
 format-prefix = "󰖕"
 format-prefix-foreground = #aafaff
 format-foreground = #aafaff
-
+format-underline = #acd7ff 
 ;[module/cava]
 ;type = custom/script
 ;tail = true
@@ -365,6 +370,8 @@ format-foreground = #aafaff
 ;format-background = ${colors.rounds}
 ;format-font = 5
 ;label = %output%
+format-prefix-background = ${colors.rounds}
+format-background = ${colors.rounds}
 
 [module/round-left]
 type = custom/text
@@ -375,6 +382,16 @@ content-foreground = ${colors.rounds}
 type = custom/text
 content = %{T3}%{T-}
 content-foreground = ${colors.rounds}
+
+[module/battery_alert]
+type = custom/script
+exec = ~/.config/polybar/scripts/battery_alert.sh
+;interval = 60
+format = <label>
+format-foreground = ${colors.alert}
+format-background = ${colors.rounds}
+format-padding = 1
+label = %output%
 
 ;[module/polywins]
 ;type = custom/script
@@ -393,7 +410,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+pseudo-transparency = true
 
 
 ; vim:ft=dosini
