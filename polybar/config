@@ -1,6 +1,7 @@
 [colors]
 rounds =            #2b2f37
-background =        #001e222a 
+;rounds =            #000000
+background =        #000000 
 btckground-alt =    #444
 foreground =        #dfdfdf
 foreground-alt =    #555
@@ -11,7 +12,7 @@ green =             #98c379
 
 [bar/parrot]
 width = 98%
-height = 25
+height = 27
 fixed-center = true
 offset-x = 1%
 offset-y = 1%
@@ -19,10 +20,10 @@ offset-y = 1%
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 0
+line-size = 1
 
-border-size = 0
-border-color = ${colors.background}
+border-color = #acd7ff
+border-size = 1
 
 
 font-0 = CaskaydiaCove Nerd Font:style=SemiBold:pixelsize=11;1
@@ -31,7 +32,7 @@ font-2 = Material Design Icons:size=15;3
 ;font-3 = unifont:fontformat=truetype:size=13:antialias=true;
 font-3 = FiraCode Nerd Font:size=12;2
 
-modules-left =      picon date temperature weather battery 
+modules-left =      picon date temperature battery weather 
 modules-center =    bspwm
 modules-right =     pulseaudio memory cpu wlan powermenu
 
@@ -98,7 +99,7 @@ format-padding = 0
 icon-default = 
 
 format = <label-state>
-format-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 label-focused = 
 label-occupied = 
 label-urgent = 
@@ -131,8 +132,8 @@ format-prefix-foreground = #fca2aa
 format-foreground = #fca2aa
 ;format-underline = #f90000
 label = %percentage:2%%
-format-prefix-background = ${colors.rounds}
-format-background = ${colors.rounds}
+;format-prefix-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 
 [module/memory]
 type = internal/memory
@@ -143,8 +144,8 @@ format-prefix-foreground = #98c379
 ;format-underline = #4bffdc
 format-foreground = #98c379
 label = %mb_used%
-format-prefix-background = ${colors.rounds}
-format-background = ${colors.rounds}
+;format-prefix-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 
 [module/wlan]
 type = internal/network
@@ -156,7 +157,7 @@ format-connected-prefix-foreground = #5dabeb
 ;format-connected-foreground = #ABB2BF
 format-connected = <label-connected>
 format-connected-foreground = #5dabeb
-format-connected-background = ${colors.rounds}
+;format-connected-background = ${colors.rounds}
 format-connected-padding = 1
 ;format-connected-underline = #9f78e1
 label-connected = %essid%
@@ -165,7 +166,8 @@ format-disconnected = 󰖪  no connection
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-label-disconnected-foreground = #5dabeb
+format-disconnected-prefix-foreground = #5dabeb
+format-disconnected-background = ${colors.rounds}
 
 ;ramp-signal-0 = 
 ;ramp-signal-1 = 
@@ -210,8 +212,8 @@ format-prefix = 󰃰
 format-prefix-padding = 1
 ;format-prefix-underline = ${colors.color6}
 format-prefix-foreground = #acd7ff
-format-prefix-background = ${colors.rounds}
-format-background = ${colors.rounds}
+;format-prefix-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 ;label =  %time%
 ;label-underline = ${colors.color6}
 ;label-foreground = ${colors.color3}
@@ -221,17 +223,17 @@ label-padding = 1
 [module/picon]
 type = custom/text
 content = 
-content-foreground = ${colors.foreground}
-content-background = ${colors.rounds}
+content-foreground = #acd7ff
+;content-background = ${colors.rounds}
 content-padding = 1
 format-prefix-background = ${colors.rounds}
-format-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-format-volume-background = ${colors.rounds}
+;format-volume-background = ${colors.rounds}
 ;format-volume-padding = 
 label-volume = 󰕾 %percentage%%
 label-volume-foreground = #ffdaaa
@@ -255,6 +257,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
 
 [module/alsa]
 type = internal/alsa
@@ -291,7 +294,7 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #acd7ff 
+;format-charging-underline = #acd7ff 
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -299,25 +302,26 @@ format-discharging-underline = ${self.format-charging-underline}
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
+;format-full-background = ${colors.rounds}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 ="  "
+ramp-capacity-1 ="  "
+ramp-capacity-2 ="  "
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 ="  "
+animation-charging-1 ="  "
+animation-charging-2 ="  "
 animation-charging-foreground =  #acd7ff
 animation-charging-framerate = 750
-format-charging-background = ${colors.rounds}
+;format-charging-background = ${colors.rounds}
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 ="  " 
+animation-discharging-1 ="  "
+animation-discharging-2 ="  "
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
-format-discharging-background = ${colors.rounds}
+;format-discharging-background = ${colors.rounds}
 
 
 [module/temperature]
@@ -326,7 +330,7 @@ thermal-zone = 0
 warn-tempeeno1e = 60
 
 format = <ramp> <label>
-format-underline = #acd7ff 
+;format-underline = #acd7ff 
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -339,14 +343,14 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = #BF616A
 format-prefix-background = ${colors.rounds}
-format-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 
 [module/powermenu]
 
 type = custom/text
 content = " "
 content-padding = 1
-content-background = ${colors.rounds}
+;content-background = ${colors.rounds}
 content-foreground = #BF616A
 click-left = ~/.config/polybar/scripts/dmenu.sh
 format-underline = #704214
@@ -358,10 +362,10 @@ interval = 5000
 label = %output%
 format = <label>
 format-padding = 1
-format-prefix = "󰖕"
-format-prefix-foreground = #aafaff
-format-foreground = #aafaff
-format-underline = #acd7ff 
+format-prefix = "󰖕 "
+format-prefix-foreground = #acd7ff
+format-foreground = #acd7ff
+;format-underline = #acd7ff 
 ;[module/cava]
 ;type = custom/script
 ;tail = true
@@ -370,8 +374,7 @@ format-underline = #acd7ff
 ;format-background = ${colors.rounds}
 ;format-font = 5
 ;label = %output%
-format-prefix-background = ${colors.rounds}
-format-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 
 [module/round-left]
 type = custom/text
@@ -389,7 +392,7 @@ exec = ~/.config/polybar/scripts/battery_alert.sh
 ;interval = 60
 format = <label>
 format-foreground = ${colors.alert}
-format-background = ${colors.rounds}
+;format-background = ${colors.rounds}
 format-padding = 1
 label = %output%
 
@@ -410,7 +413,6 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = true
-
+pseudo-transparency = fale
 
 ; vim:ft=dosini
