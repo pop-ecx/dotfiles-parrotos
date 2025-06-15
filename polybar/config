@@ -10,10 +10,11 @@ secondary =         #e60053
 alert =             #bd2c40
 green =             #98c379
 
-[bar/parrot]
-width = 98%
+; Left bar - contains left modules
+[bar/parrot-left]
+width = 22%
 height = 27
-fixed-center = true
+fixed-center = false
 offset-x = 1%
 offset-y = 1%
 
@@ -25,23 +26,76 @@ line-size = 1
 border-color = #acd7ff
 border-size = 1
 
+font-0 = CaskaydiaCove Nerd Font:style=SemiBold:pixelsize=11;1
+font-1 = JetBrainsMono Nerd Font:size=19;5
+font-2 = Material Design Icons:size=15;3
+font-3 = FiraCode Nerd Font:size=12;2
+
+modules-left = picon date temperature battery weather
+modules-center = 
+modules-right = 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Center bar - contains center modules
+[bar/parrot-center]
+width = 25%
+height = 27
+fixed-center = true
+offset-x = 35%
+offset-y = 1%
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+
+border-color = #acd7ff
+border-size = 1
 
 font-0 = CaskaydiaCove Nerd Font:style=SemiBold:pixelsize=11;1
 font-1 = JetBrainsMono Nerd Font:size=19;5
 font-2 = Material Design Icons:size=15;3
-;font-3 = unifont:fontformat=truetype:size=13:antialias=true;
 font-3 = FiraCode Nerd Font:size=12;2
 
-modules-left =      picon date temperature battery weather 
-modules-center =    bspwm
-modules-right =     pulseaudio memory cpu wlan powermenu
+modules-left = 
+modules-center = bspwm
+modules-right = 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Right bar - contains right modules
+[bar/parrot-right]
+width = 30%
+height = 27
+fixed-center = false
+offset-x = 69%
+offset-y = 1%
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+
+border-color = #acd7ff
+border-size = 1
+
+font-0 = CaskaydiaCove Nerd Font:style=SemiBold:pixelsize=11;1
+font-1 = JetBrainsMono Nerd Font:size=19;5
+font-2 = Material Design Icons:size=15;3
+font-3 = FiraCode Nerd Font:size=12;2
+
+modules-left = 
+modules-center = 
+modules-right = pulseaudio memory cpu wlan powermenu
 
 tray-position = right
 tray-padding = 1
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
 
 [module/filesystem]
 type = internal/fs
@@ -50,7 +104,7 @@ interval = 100
 mount-0 = /
 format = <label-mounted>
 format-mounted-padding = 1
-format-mounted-prefix = " "
+format-mounted-prefix = " "
 format-mounted-prefix-foreground = #dafeab 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
@@ -96,11 +150,11 @@ enable-click = true
 enable-scroll = true
 format-padding = 0
 
-icon-default = 
+icon-default =  
 
 format = <label-state>
 ;format-background = ${colors.rounds}
-label-focused = 
+label-focused =  
 label-occupied = 
 label-urgent = 
 label-empty = 
@@ -169,11 +223,11 @@ format-disconnected = 󰖪  no connection
 format-disconnected-prefix-foreground = #5dabeb
 format-disconnected-background = ${colors.rounds}
 
-;ramp-signal-0 = 
-;ramp-signal-1 = 
-;ramp-signal-2 = 
-;ramp-signal-3 = 
-;ramp-signal-4 = 
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
 ;ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -197,7 +251,6 @@ format-disconnected = 󰖪  no connection
 ;label-disconnected = %ifname% disconnected
 label-disconnected-foreground = #5dabeb
 
-
 [module/date]
 type = internal/date
 interval = 60
@@ -214,7 +267,7 @@ format-prefix-padding = 1
 format-prefix-foreground = #acd7ff
 ;format-prefix-background = ${colors.rounds}
 ;format-background = ${colors.rounds}
-;label =  %time%
+;label =  %time%
 ;label-underline = ${colors.color6}
 ;label-foreground = ${colors.color3}
 ;label-background = ${colors.color1}
@@ -222,7 +275,7 @@ label-padding = 1
 
 [module/picon]
 type = custom/text
-content = 
+content =  
 content-foreground = #acd7ff
 ;content-background = ${colors.rounds}
 content-padding = 1
@@ -258,16 +311,15 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-
 [module/alsa]
 type = internal/alsa
 format-volume = <label-volume> <bar-volume>
 format-volume-background = ${colors.rounds}
 format-volume-padding = 1
-label-volume =  %percentage%%
+label-volume =  %percentage%%
 label-volume-foreground = #ffdaaa
 
-label-muted =  muted
+label-muted =  muted
 label-muted-foreground = #666
 label-muted-background = ${colors.rounds}
 bar-volume-width = 10
@@ -299,7 +351,7 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 ;format-full-background = ${colors.rounds}
@@ -323,7 +375,6 @@ animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 ;format-discharging-background = ${colors.rounds}
 
-
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -338,8 +389,8 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
+ramp-0 =  
+ramp-1 = 
 ramp-2 = 
 ramp-foreground = #BF616A
 format-prefix-background = ${colors.rounds}
@@ -362,28 +413,19 @@ interval = 5000
 label = %output%
 format = <label>
 format-padding = 1
-format-prefix = "󰖕 "
+format-prefix = " 󰖕 "
 format-prefix-foreground = #acd7ff
 format-foreground = #acd7ff
 ;format-underline = #acd7ff 
-;[module/cava]
-;type = custom/script
-;tail = true
-;exec = ~/.config/polybar/polybar-themes/onedark-theme/polybar/scripts/cava.sh
-;format = <label>
-;format-background = ${colors.rounds}
-;format-font = 5
-;label = %output%
-;format-background = ${colors.rounds}
 
 [module/round-left]
 type = custom/text
-content = %{T3}%{T-}
+content = %{T3}%{T-}
 content-foreground = ${colors.rounds}
 
 [module/round-right]
 type = custom/text
-content = %{T3}%{T-}
+content = %{T3}%{T-}
 content-foreground = ${colors.rounds}
 
 [module/battery_alert]
@@ -395,17 +437,6 @@ format-foreground = ${colors.alert}
 ;format-background = ${colors.rounds}
 format-padding = 1
 label = %output%
-
-;[module/polywins]
-;type = custom/script
-;exec = ~/.config/polybar/polybar-themes/onedark-theme/polybar/scripts/polywins.sh 2>/dev/null
-;format = <label>
-;format-background = #2b2f37
-;format-padding = 1
-;format-margin = 0
-;label = %output%
-;label-padding = 0
-;tail = true
 
 [settings]
 screenchange-reload = true
