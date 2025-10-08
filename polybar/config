@@ -1,8 +1,8 @@
 [colors]
 rounds =            #2b2f37
 ;rounds =            #000000
-background =        #000000 
-btckground-alt =    #444
+background =        #000000
+background-alt =    #444
 foreground =        #dfdfdf
 foreground-alt =    #555
 primary =           #ffb52a
@@ -12,7 +12,7 @@ green =             #98c379
 
 ; Left bar - contains left modules
 [bar/parrot-left]
-width = 22%
+width = 24%
 height = 27
 fixed-center = false
 offset-x = 1%
@@ -40,10 +40,10 @@ cursor-scroll = ns-resize
 
 ; Center bar - contains center modules
 [bar/parrot-center]
-width = 25%
+width = 14%
 height = 27
 fixed-center = true
-offset-x = 35%
+offset-x = 38%
 offset-y = 1%
 
 background = ${colors.background}
@@ -206,7 +206,7 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-format-connected-prefix = "󰖩 "
+format-connected-prefix = "[󰖩 "
 format-connected-prefix-foreground = #5dabeb
 ;format-connected-foreground = #ABB2BF
 format-connected = <label-connected>
@@ -214,15 +214,16 @@ format-connected-foreground = #5dabeb
 ;format-connected-background = ${colors.rounds}
 format-connected-padding = 1
 ;format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected = 󰖪  no connection
+;label-connected = %essid% ]
+label-connected = %{A1:~/.config/polybar/scripts/wifi-menu.sh:}%essid% ]%{A}
+;format-disconnected = 󰖪  no connection
+format-disconnected = %{A1:~/.config/polybar/scripts/wifi-menu.sh:}󰖪  no connection%{A}
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 format-disconnected-prefix-foreground = #5dabeb
 format-disconnected-background = ${colors.rounds}
-
+;click-left = ~/.config/polybar/scripts/wifi-menu.sh
 ;ramp-signal-0 = 
 ;ramp-signal-1 = 
 ;ramp-signal-2 = 
@@ -256,12 +257,12 @@ type = internal/date
 interval = 60
 date = %a %d %b
 time = %l:%M %p
-label = "%date% %time% "
+label = "%date% %time% ]"
 format = <label>
 format-foreground = #acd7ff
 ;format-foreground = #edfefe
 ;format-margin = 1
-format-prefix = 󰃰
+format-prefix =[ 󰃰
 format-prefix-padding = 1
 ;format-prefix-underline = ${colors.color6}
 format-prefix-foreground = #acd7ff
@@ -285,10 +286,10 @@ format-prefix-background = ${colors.rounds}
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume> <bar-volume> ]
 ;format-volume-background = ${colors.rounds}
 ;format-volume-padding = 
-label-volume = 󰕾 %percentage%%
+label-volume = [ 󰕾 %percentage%%
 label-volume-foreground = #ffdaaa
 
 label-muted = 󰖁 muted
@@ -349,11 +350,11 @@ format-charging = <animation-charging> <label-charging>
 ;format-charging-underline = #acd7ff 
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 ;format-full-background = ${colors.rounds}
 
 ramp-capacity-0 ="  "
@@ -383,7 +384,7 @@ warn-tempeeno1e = 60
 format = <ramp> <label>
 ;format-underline = #acd7ff 
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
@@ -410,10 +411,10 @@ format-underline = #704214
 type = custom/script
 exec = curl wttr.in/kijabe?0?q?T 2>/dev/null | awk '/°(C|F)/ {printf $(NF-1) $NF}'
 interval = 5000
-label = %output%
+label = %output% ]
 format = <label>
 format-padding = 1
-format-prefix = " 󰖕 "
+format-prefix = "[ 󰖕 "
 format-prefix-foreground = #acd7ff
 format-foreground = #acd7ff
 ;format-underline = #acd7ff 
@@ -444,6 +445,6 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = fale
+pseudo-transparency = true
 
 ; vim:ft=dosini
