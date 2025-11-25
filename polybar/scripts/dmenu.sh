@@ -1,6 +1,6 @@
 #!/bin/bash
 
-action=$(zenity --list --title="Power Options" --text="Select an action:" --column="Action" "Shutdown" "Restart" "Lock Screen" --width=300 --height=200)
+action=$(zenity --list --title="Power Options" --text="Select an action:" --column="Action" "Shutdown" "Restart" "Lock Screen" "Sign Out" "Switch User" --width=300 --height=250)
 
 if [ -z "$action" ]; then
   notify-send "No action selected" "Power menu cancelled."
@@ -45,5 +45,13 @@ case "$action" in
   "Lock Screen")
     i3lock-fancy
     notify-send "Screen locked" "The session has been locked."
+    ;;
+  "Sign Out")
+    notify-send "Signing out" "See you soon."
+    loginctl terminate-session "$XDG_SESSION_ID"
+    ;;
+  "Switch User")
+    notify-send "Switching user" "Opening login screen."
+    dm-tool switch-to-greeter
     ;;
 esac
